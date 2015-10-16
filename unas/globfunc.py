@@ -30,5 +30,16 @@ def mergevalues(first, second, merge_conflicts="%s|%s"):
     para combinarlos.
 
     """
-
-    pass
+    if first is None:
+        first = ''
+    if second is None:
+        second = ''
+    if first == second:
+        return str(first)
+    if str(first) == str(second):
+        return str(first)
+    if not first:
+        return str(second)
+    if not second:
+        return str(first)
+    return merge_conflicts % (first,second)

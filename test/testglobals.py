@@ -30,23 +30,31 @@ class GlobalTests(unittest.TestCase):
 
     def test_mergevalues_equal(self):
         'if the values are equal, return it'
-        self.assertequals(mergevalues(1,1),'1')
-        self.assertequals(mergevalues('1','1'),'1')
-        self.assertequals(mergevalues('1',1),'1')
-        self.assertequals(mergevalues(1,'1'),'1')
+        self.assertEquals(mergevalues(1,1),'1')
+        self.assertEquals(mergevalues('1','1'),'1')
+        self.assertEquals(mergevalues('1',1),'1')
+        self.assertEquals(mergevalues(1,'1'),'1')
 
     def test_mergevalues_conflict(self):
         'if they conflict, return both'
-        1/0
+        self.assertEquals(mergevalues(25,48),'25|48')
+        self.assertEquals(mergevalues(25,48,"%s::%s"),'25::48')
+        #1/0
 
     def test_mergevalues_one_empty(self):
         'if one is empty, return the non empty one'
-        1/0
+        self.assertEquals(mergevalues('',1),'1')
+        self.assertEquals(mergevalues(1,''),'1')
+        self.assertEquals(mergevalues('1',''),'1')
+        #1/0
+
 
     def test_mergevalues_both_empty(self):
         'if both are empty, return the empty string'
-        1/0
+        raise unittest.SkipTest()
+        #1/0
 
     def test_mergevalues_none_as_empty_string(self):
         'the function does not distinguish between None and the empty string'
-        1/0
+        raise unittest.SkipTest()
+        #1/0
